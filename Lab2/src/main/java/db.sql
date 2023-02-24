@@ -1,0 +1,2 @@
+CREATE TABLE `productmanagement`.`product` (`id` INT(10) NOT NULL , `name` VARCHAR(249) NOT NULL , `price` DECIMAL(20,10) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+ALTER TABLE Persons AUTO_INCREMENT=1;
