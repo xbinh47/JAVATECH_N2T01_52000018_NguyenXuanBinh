@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> HISTORY | TECHSTORE </title>
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon"
+    href="/img/favicon-icon.png"
+    type="image/gif" sizes="16x16">
+  <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+  <header>
+    <section>
+      <div id="container">
+        <div id="shopName"><img id="logo-img" src="/img/logo.jpg"></div>
+        <div id="collection">
+          <div id="clothing"><a href="/"> Home </a></div>
+          <div id="accessories"><a href="/history"> History </a></div>
+        </div>
+        <div id="account" style="font-size: 40px;">
+          <a href="/logout" style="font-size: 40px;">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </a>
+        </div>
+      </div>
+
+    </section>
+  </header>
+  <div id="account_id" th:text="${account_id}" hidden></div>
+  <section class="h-100 gradient-custom" style="padding-top: 150px;padding-bottom: 40px ">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-10 col-xl-8">
+          <div class="card" style="border-radius: 10px;">
+            <div class="card-header px-4 py-5">
+              <h5 class="text-muted mb-0">Thanks for your Orders</h5>
+            </div>
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <p class="lead fw-normal mb-0" style="color: #a8729a;">Your order histories</p>
+              </div>
+              <th:block th:each="orderHistory : ${orderHistories}">
+                <div class="card shadow-0 border mb-4">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                        <p class="text-muted mb-0" th:text="'Order ID: '+${orderHistory?.id}"></p>
+                      </div>
+                      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                        <p class="text-muted mb-0 small" th:text="'Accout ID: '+${orderHistory?.getAccount().id}"></p>
+                      </div>
+                      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                        <p class="text-muted mb-0 small" th:text="${orderHistory?.totalPrice}+'$'"></p>
+                      </div>
+                      <div class="col-md-4 text-center d-flex justify-content-center align-items-center">
+                        <p class="text-muted mb-0 small" th:text="${orderHistory?.createdAt}"></p>
+                      </div>
+                      <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                        <button class="btn btn-primary show-detail" th:order_id="${orderHistory?.id}" data-bs-toggle="modal" data-bs-target="#detailModal">Show</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </th:block>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <section>
+      <div id="containerFooter">
+        <div class="webFooter">
+          <img src="/img/logo.jpg" alt="" style="max-height: 150px">
+        </div>
+        <div class="webFooter">
+          <h3> partners </h3>
+          <p> Apple </p>
+          <p> Samsung </p>
+          <p> Xiaomi </p>
+        </div>
+        <div class="webFooter">
+          <h3> Contact </h3>
+          <p> Nguyyễn Xuân Bình </p>
+          <p> 52000018@student.tdtu.edu.vn </p>
+          <p> Tân Phong, Quận 7 </p>
+          <p> 090909090909 </p>
+        </div>
+      </div>
+    </section>
+  </footer>
+  <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="detailModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table align-middle mb-0 bg-white">
+            <thead class="bg-light">
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Brand</th>
+              <th>Color</th>
+              <th>Price</th>
+            </tr>
+            </thead>
+            <tbody id="modal-table-body">
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                       class="rounded-circle" />
+                  <div class="ms-3">
+                    <p class="fw-bold mb-1">John Doe</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <p class="fw-normal mb-1">Software engineer</p>
+              </td>
+              <td>Senior</td>
+              <td>
+                <p></p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script>
+  document.querySelectorAll('.show-detail').forEach(element => {
+    element.addEventListener('click', function () {
+        const orderId = element.getAttribute('order_id')
+        fetch('/api/order/getOrderDetails?order_id=' + orderId)
+            .then(response => response.json())
+            .then(data => {
+            const modalTableBody = document.getElementById('modal-table-body')
+            modalTableBody.innerHTML = ''
+            data?.data?.forEach(orderDetail => {
+                const tr = document.createElement('tr')
+                const tdImage = document.createElement('td')
+                const img = document.createElement('img')
+                img.src = orderDetail.product.image
+                img.style.width = '45px'
+                img.style.height = '45px'
+                tdImage.appendChild(img)
+                const tdName = document.createElement('td')
+                tdName.innerText = orderDetail.product.name
+                const tdBrand = document.createElement('td')
+                tdBrand.innerText = orderDetail.product.brand
+                const tdColor = document.createElement('td')
+                tdColor.innerText = orderDetail.product.color
+                const tdPrice = document.createElement('td')
+                tdPrice.innerText = orderDetail.product.price
+                tr.appendChild(tdImage)
+                tr.appendChild(tdName)
+                tr.appendChild(tdBrand)
+                tr.appendChild(tdColor)
+                tr.appendChild(tdPrice)
+                modalTableBody.appendChild(tr)
+            })
+            })
+    })
+  })
+</script>
+
+</html>

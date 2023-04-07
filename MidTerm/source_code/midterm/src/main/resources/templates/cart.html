@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> CART | TECHSTORE </title>
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="icon"
+        href="/img/favicon-icon.png"
+        type="image/gif" sizes="16x16">
+    <script src="https://kit.fontawesome.com/4a3b1f73a2.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <section>
+            <div id="container">
+                <div id="shopName"><img id="logo-img" src="/img/logo.jpg"></div>
+                <div id="collection">
+                    <div id="clothing"><a href="/"> Home </a></div>
+                    <div id="accessories"><a href="/history"> History </a></div>
+                </div>
+                <div id="account">
+                    <a href="/logout" style="font-size: 40px;">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+    </header>
+    <div id="account_id" th:text="${account_id}" hidden></div>
+    <div id="order_id" th:text="${orderHistory?.id}" hidden></div>
+    <section class="h-100 h-custom" style="background-color: #eee;">
+        <div class="container h-100" id="cartMainContainer">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div>
+                                            <p class="mb-1">Shopping cart</p>
+                                            <p class="mb-0"
+                                                th:text="'You have '+ (${orderHistory?.orderDetails?.size()} ?: '0' + ' items in your cart')">
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0" th:text="'Time create: '+ (${orderHistory?.createdAt} ?: '')">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <th:block th:each="orderDetail : ${orderHistory?.orderDetails}">
+                                        <div class="card mb-3">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div>
+                                                            <img th:src="${orderDetail?.product.image}"
+                                                                class="img-fluid rounded-3" alt="Shopping item"
+                                                                style="width: 65px;">
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h5 th:text="${orderDetail?.product.name}"></h5>
+                                                            <p th:text="${orderDetail?.product.brand}"
+                                                                class="small mb-0">256GB, Navy Blue</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div style="width: 50px;">
+                                                            <h5 class="fw-normal mb-0">2</h5>
+                                                        </div>
+                                                        <div style="width: 80px;">
+                                                            <h5 th:text="(${orderDetail?.product.price} ?: (''))+ '$'"
+                                                                class="mb-0"></h5>
+                                                        </div>
+                                                        <button id="delete-detail-order" style="color: #cecece;"><i
+                                                                class="fas fa-trash-alt"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th:block>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="card mb-4" id="totalContainer">
+                                        <div class="card-header py-3">
+                                            <h5 class="mb-0">Summary</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li
+                                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                                    Products
+                                                    <span th:text="(${orderHistory?.totalPrice} ?: '0')+'$'"></span>
+                                                </li>
+                                                <li
+                                                    class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                                    Shipping Cost
+                                                    <span>0</span>
+                                                </li>
+                                                <li
+                                                    class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                                                    <div>
+                                                        <strong>Total amount</strong>
+                                                    </div>
+                                                    <span><strong th:text="(${orderHistory?.totalPrice} ?: '0')+'$'"></strong></span>
+                                                </li>
+                                            </ul>
+                                            <button id="confirm-btn" type="button" >
+                                                Go to checkout
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <footer>
+        <section>
+            <div id="containerFooter">
+                <div class="webFooter">
+                    <img src="/img/logo.jpg" alt="" style="max-height: 150px">
+                </div>
+                <div class="webFooter">
+                    <h3> partners </h3>
+                    <p> Apple </p>
+                    <p> Samsung </p>
+                    <p> Xiaomi </p>
+                </div>
+                <div class="webFooter">
+                    <h3> Contact </h3>
+                    <p> Nguyyễn Xuân Bình </p>
+                    <p> 52000018@student.tdtu.edu.vn </p>
+                    <p> Tân Phong, Quận 7 </p>
+                    <p> 090909090909 </p>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+<script>
+    document.getElementById("confirm-btn").addEventListener("click", function () {
+        fetch("http://localhost:8080/api/order/confirmOrder", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "account_id": document.getElementById("account_id").innerText,
+                "order_id": document.getElementById("order_id").innerText
+            })
+        }).then(res => res.json())
+            .then(data => {
+                if (data.status == 200) {
+                    alert("Order placed successfully")
+                    window.location.href = "/cart"
+                } else {
+                    alert("Order placed failed")
+                }
+
+            })
+    })
+    document.getElementById("delete-detail-order").addEventListener("click", function () {
+        fetch("http://localhost:8080/api/order/deleteOrderDetail", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "account_id": document.getElementById("account_id").innerText,
+                "product_id": this.getAttribute("product_id")
+            })
+        }).then(res => res.json())
+            .then(data => {
+                if (data.status == 200) {
+                    alert("Order placed successfully")
+                    window.location.href = "/cart"
+                } else {
+                    alert("Order placed failed")
+                }
+            })
+    })
+</script>
+
+</html>
