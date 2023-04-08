@@ -1,9 +1,11 @@
-# LapTop4U
+# TechStore
 
-LapTop4U is a very simple website was built to sell laptop.
+TechStore is a very simple website was built to sell products.
 
 ## Summary
-
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="300" height="300">
+  </a>
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -11,7 +13,7 @@ LapTop4U is a very simple website was built to sell laptop.
     <li><a href="#Built-with">Built with</a></li>
     <li><a href="#Code-Explanation">Code Explanation</a></li>
     <li><a href="#Deployment">Deployment</a></li>
-    <li><a href="#Website-screenshots">Website screenshots</a></li>
+    <li><a href="#Website-snapshots">Website snapshots</a></li>
     <li><a href="#Postman-snapshots">Postman snapshots</a></li>
   </ol>
 </details>
@@ -94,11 +96,15 @@ LapTop4U is a very simple website was built to sell laptop.
   - Service Implement
   > These are implementation class for three service interface implementations in a Spring application. Each of these classes is annotated with @Service indicating that it is a Spring service component and has a repository injected through the @Autowired annotation.
   
+  Account Service Implement
+  
   > findAccountById: finds an account by its ID.
 
   > findAccountByUsername: finds an account by its username.
   
   > loadUserByUsername: loads the user details for the given username by retrieving the corresponding account from the repository and returning a custom implementation of UserDetails called CustomAccountDetails.
+
+  Order Service Implement
   
   > The getOrderHistory method returns a list of OrderHistory for a specific Account and status.
 
@@ -110,8 +116,8 @@ LapTop4U is a very simple website was built to sell laptop.
 
   > The updateOldOrder method updates an existing Order with new OrderDetail.
 
-  > I use these repositories to access the application's database, including OrderHistoryRepository, OrderDetailRepository, AccountRepository, and ProductRepository.
-  
+  Product Service Implement
+
   > getAllProducts: returns a list of all products.
   
   > getProduct: returns a product by ID.
@@ -169,7 +175,7 @@ LapTop4U is a very simple website was built to sell laptop.
 
   > Alternatively, you can open the project in IntelliJ IDEA and create a MySQL database with the same specifications. Then, you can run the project through the main class and import the data.sql file.
 
-## Website screenshots
+## Website snapshots
 - Login: Login to use web (have two account(username, password): (account,123456), (xbinh47, 123456)
 
 ![Login](https://user-images.githubusercontent.com/91370679/230649931-17c0ca90-9be0-493e-a003-0d7cf4fb9acf.png)
@@ -191,28 +197,25 @@ LapTop4U is a very simple website was built to sell laptop.
 ![History](https://user-images.githubusercontent.com/91370679/230650057-7003497b-bea0-46c3-93ef-efa4814ef664.png)
 
 ## Postman snapshots
+- Setup JSESSIONID in Postman
+![image](https://user-images.githubusercontent.com/91370679/230707709-9d992cef-9812-40d8-80b1-c82e71e5b70f.png)
+![image](https://user-images.githubusercontent.com/91370679/230707753-23c9258b-9ada-4d64-911c-fef75b556967.png)
+
+
 - Authorization Postman for my API:
 ![image](https://user-images.githubusercontent.com/91370679/230651356-52387c67-c6f2-4210-93e1-d72db303a421.png)
 
-
 - FilterProductByName: return product by name
-![image](https://user-images.githubusercontent.com/91370679/230651624-e366f27b-32c7-4a2f-923e-4e8829ca8d36.png)
-
+![image](https://user-images.githubusercontent.com/91370679/230707842-41292b5a-8de5-4f79-b891-db04340f5a82.png)
 
 - AddOrder: add new order. Return success or error message
-![image](https://user-images.githubusercontent.com/91370679/230652009-0b980625-70fe-4a3e-83f0-d822763bc6a5.png)
+![image](https://user-images.githubusercontent.com/91370679/230707855-3fc6a51f-5c6d-49a7-a0c3-38dc156219d4.png)
 
 - GetOrder: get all orders by status
-![GetAllLaptop](https://user-images.githubusercontent.com/89438952/230541919-7b6d7f18-d6e3-4d56-bb4a-fbefc3ea0fbf.png)
+![image](https://user-images.githubusercontent.com/91370679/230707886-8830b39c-4ef6-4003-8366-125a71e903de.png)
 
-- getCart: get laptop list depending on status. Return list laptop
-![GetCart](https://user-images.githubusercontent.com/89438952/230541931-774b5661-ce54-4820-a346-e81573e1759c.png)
+- DeleteOrderDetail: delete order of a product in current cart
+- ![image](https://user-images.githubusercontent.com/91370679/230707993-f4b0cab7-b60b-46b3-a65c-482b669897dd.png)
 
-- laptop: get laptop infomation by id. Return laptop infomation page
-![GetLaptop](https://user-images.githubusercontent.com/89438952/230541940-44c63396-2df3-456a-80a7-8d8e638da8a4.png)
-
-- search: search laptop by keywords. Return list laptop
-![GetSearchLaptop](https://user-images.githubusercontent.com/89438952/230541955-a9cca064-24d6-4232-8f2d-71a70935452d.png)
-
-- purchaseCart: mark cart as purchased. Return success or error message
-![Purchase](https://user-images.githubusercontent.com/89438952/230541966-a9467719-b0f3-482f-9d40-14a71e2ebcdb.png)
+- Get Order Detail: get all the details product by order id relate to order history
+![image](https://user-images.githubusercontent.com/91370679/230708149-67d22545-af8d-4594-8809-3a1ea098aa91.png)
