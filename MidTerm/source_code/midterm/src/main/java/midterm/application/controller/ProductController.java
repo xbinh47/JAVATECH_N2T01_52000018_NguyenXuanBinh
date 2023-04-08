@@ -25,12 +25,15 @@ public class ProductController {
     private OrderService orderService;
     @GetMapping(value = "/",produces = "text/html;charset=UTF-8")
     public String renderMain(Model model){
-        Long account_id = Long.parseLong(request.getSession().getAttribute("account_id").toString());
-        List<OrderHistory> orderHistories = orderService.getOrderHistory(account_id,0);
-        if(orderHistories != null && orderHistories.size() > 0){
-            model.addAttribute("order_id",orderHistories.get(0));
+        Long account_id = null;
+        if(request.getSession().getAttribute("account_id") != null){
+            account_id = Long.parseLong(request.getSession().getAttribute("account_id").toString());
+            model.addAttribute("account_id",account_id);
+            List<OrderHistory> orderHistories = orderService.getOrderHistory(account_id,0);
+            if(orderHistories != null && orderHistories.size() > 0){
+                model.addAttribute("order_id",orderHistories.get(0));
+            }
         }
-        model.addAttribute("account_id",account_id);
         model.addAttribute("products",productService.getAllProducts());
         model.addAttribute("categories",productService.getAllCategories());
         model.addAttribute("count",orderService.getNumberOfOrderDetail(account_id));
@@ -40,14 +43,17 @@ public class ProductController {
     @GetMapping("/{id}")
     public String getProduct(@PathVariable Long id, Model model){
         try{
-            Long account_id = Long.parseLong(request.getSession().getAttribute("account_id").toString());
-            List<OrderHistory> orderHistories = orderService.getOrderHistory(account_id,0);
-            if(orderHistories != null && orderHistories.size() > 0){
-                model.addAttribute("order_id",orderHistories.get(0));
+            Long account_id = null;
+            if(request.getSession().getAttribute("account_id") != null){
+                account_id = Long.parseLong(request.getSession().getAttribute("account_id").toString());
+                model.addAttribute("account_id",account_id);
+                List<OrderHistory> orderHistories = orderService.getOrderHistory(account_id,0);
+                if(orderHistories != null && orderHistories.size() > 0){
+                    model.addAttribute("order_id",orderHistories.get(0));
+                }
             }
             Product product = productService.getProduct(id);
             model.addAttribute("product",product);
-            model.addAttribute("account_id",account_id);
             model.addAttribute("count",orderService.getNumberOfOrderDetail(account_id));
             return "productDetail";
         }catch (Exception e){

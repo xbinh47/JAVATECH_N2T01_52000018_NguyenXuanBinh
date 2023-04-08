@@ -5,7 +5,6 @@ import org.springframework.security.core.userdetails.User;
 
 import java.io.Serializable;
 import java.util.Collections;
-import java.util.List;
 
 
 public class CustomAccountDetails extends User implements Serializable {
