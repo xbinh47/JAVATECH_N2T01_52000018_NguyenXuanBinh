@@ -1,11 +1,14 @@
+  <div align="center">
+    <a href="https://github.comxbinh47/JAVATECH_N2T01_52000018_NguyenXuanBinh/MidTerm">
+      <img src="images/logo.jpg" alt="Logo" width="300" height="300">
+    </a>
+  </div>
 # TechStore
 
 TechStore is a very simple website was built to sell products.
 
 ## Summary
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="300" height="300">
-  </a>
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
