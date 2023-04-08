@@ -7,6 +7,9 @@ $(document).ready(function () {
 
       let card = document.createElement("div")
       card.classList.add("card")
+      card.addEventListener("click", function () {
+        addToCart(items.id)
+      })
 
       let imgContainer = document.createElement("div")
       imgContainer.classList.add("image-container")
@@ -30,6 +33,8 @@ $(document).ready(function () {
 
       card.appendChild(container);
       document.getElementById("products").appendChild(card);
+
+
     }
   }
   function searchRenderProduct(data) {
@@ -48,12 +53,16 @@ $(document).ready(function () {
     ul.innerHTML = list
   }
 
-  $('#search-input').on('keyup', function () {
+  $('#search-input').on('keyup', function (event) {
     let value = $(this).val().toLowerCase();
     if (value.length === 0) {
       let ul = document.getElementById("search-detail-list")
       ul.style.display = "none"
       return
+    }
+
+    if(event.keycode === 13) {
+        $('#search-btn').click()
     }
     fetch(`/api/getProductsByName?name=${value}`)
       .then(response => response.json())
@@ -89,6 +98,10 @@ $(document).ready(function () {
     let id = $(this).attr('product_id')
     window.location.href = `/${id}`
   })
+
+  function addToCart(id) {
+    window.location.href = `/${id}`
+  }
 
   $('#search-btn').click(function () {
     let value = $('#search-input').val().toLowerCase();

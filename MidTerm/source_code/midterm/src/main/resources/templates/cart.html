@@ -79,13 +79,13 @@
                                                     </div>
                                                     <div class="d-flex flex-row align-items-center">
                                                         <div style="width: 50px;">
-                                                            <h5 class="fw-normal mb-0">2</h5>
+                                                            <h5 class="fw-normal mb-0" th:text="${orderDetail?.quantity}"></h5>
                                                         </div>
                                                         <div style="width: 80px;">
                                                             <h5 th:text="(${orderDetail?.product.price} ?: (''))+ '$'"
                                                                 class="mb-0"></h5>
                                                         </div>
-                                                        <button id="delete-detail-order" style="color: #cecece;"><i
+                                                        <button id="delete-detail-order" style="color: #cecece;" th:product_id="${orderDetail?.product.id}"><i
                                                                 class="fas fa-trash-alt"></i></button>
                                                     </div>
                                                 </div>

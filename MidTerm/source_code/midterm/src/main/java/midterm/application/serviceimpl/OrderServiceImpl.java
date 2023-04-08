@@ -197,8 +197,12 @@ public class OrderServiceImpl implements OrderService {
             result.put("message","order_id is required");
             return result;
         }
-        Long order_id = Long.valueOf(body.get("order_id"));
         List<OrderHistory> orderHistories = orderHistoryRepository.findAllByAccountAndStatusOrderByCreatedAtDesc(accountRepository.findAccountById(Long.valueOf(body.get("account_id"))),0);
+        if(orderHistories.size() == 0){
+            result.put("status",400);
+            result.put("message","No order to confirm");
+            return result;
+        }
         OrderHistory orderHistory = orderHistories.get(0);
         orderHistory.setStatus(1);
         orderHistoryRepository.save(orderHistory);
@@ -232,13 +236,13 @@ public class OrderServiceImpl implements OrderService {
         OrderDetail orderDetail = orderDetailRepository.findOrderDetailByOrderHistoryAndProduct(orderHistory,productRepository.findProductById(product_id));
         orderHistory.setTotalPrice(orderHistory.getTotalPrice() - orderDetail.getProduct().getPrice() * orderDetail.getQuantity());
         orderHistoryRepository.save(orderHistory);
-        if(orderHistory.getOrderDetails().size() == 1){
+        orderDetailRepository.delete(orderDetail);
+        if(orderHistory.getOrderDetails().size() == 0){
             orderHistoryRepository.deleteById(orderHistory.getId());
             result.put("message","Order deleted successfully");
             result.put("status",200);
             return result;
         }
-        orderDetailRepository.deleteById(orderDetail.getId());
         result.put("message","Order detail deleted successfully");
         result.put("status",200);
         return result;
