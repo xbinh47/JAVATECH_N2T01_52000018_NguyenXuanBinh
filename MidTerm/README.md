@@ -162,7 +162,9 @@ TechStore is a very simple website was built to sell products.
    
   > getOrderHistoryDetail: a GET method that retrieves the details of a specific order from the order history, sent as request parameters.
   
-  > CustomErrorController implements the ErrorController interface and handles HTTP error requests by mapping them to the "/error" endpoint. The HandleError method retrieves the status code and error message from the HttpServletRequest object and adds them as attributes to the Model object. It then returns the name of the view to be rendered, which is "error". This class allows for customization of error handling and display of error messages in the application's UI.
+  CustomErrorController implements the ErrorController interface and handles HTTP error requests by mapping them to the "/error" endpoint. 
+  
+  > The HandleError method retrieves the status code and error message from the HttpServletRequest object and adds them as attributes to the Model object. It then returns the name of the view to be rendered, which is "error". This class allows for customization of error handling and display of error messages in the application's UI.
 ## Deployment
 
   > To deploy this project run
