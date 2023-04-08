@@ -3,6 +3,7 @@
       <img src="images/logo.jpg" alt="Logo" width="300" height="300">
     </a>
   </div>
+
 # TechStore
 
 TechStore is a very simple website was built to sell products.
@@ -37,6 +38,16 @@ TechStore is a very simple website was built to sell products.
   > MySQL Connector/J: It is an official JDBC driver provided by MySQL for communicating with MySQL databases. JDBC is a Java API for connecting to databases and executing SQL statements. MySQL Connector/J implements the JDBC API and is used to connect Java applications to MySQL databases.
 
   > Spring Security: It is a powerful and highly customizable authentication and access-control framework for securing Spring-based Java web applications. Spring Security provides various security features like authentication, authorization, and protection against common attacks like cross-site scripting and request forgery. Developers can easily secure their applications by configuring security rules, creating custom authentication mechanisms, and integrating with other security providers.
+
+## Diagram
+ - ERD:
+ 
+ ![ERD](https://user-images.githubusercontent.com/91370679/230735594-76d979c3-c71c-4041-b105-6e14b643225f.png)
+ 
+ - Database Diagram
+
+ ![Database Diagram](https://user-images.githubusercontent.com/91370679/230735607-05530b09-1bf3-4f7b-abaf-1b884e50bef1.png)
+
 ## Code Explanation
   - Config Security
   Spring Security configuration class for securing a web application.
