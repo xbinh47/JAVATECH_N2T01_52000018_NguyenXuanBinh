@@ -46,7 +46,7 @@ TechStore is a very simple website was built to sell products.
  
  - Database Diagram
 
- ![Database Diagram](https://user-images.githubusercontent.com/91370679/230735607-05530b09-1bf3-4f7b-abaf-1b884e50bef1.png)
+![Database Diagram](https://user-images.githubusercontent.com/91370679/230737449-e6bee4db-b2f2-4683-beef-243d0cbe205e.png)
 
 ## Code Explanation
   - Config Security
