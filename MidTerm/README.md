@@ -212,6 +212,9 @@ TechStore is a very simple website was built to sell products.
 
 ![History](https://user-images.githubusercontent.com/91370679/230650057-7003497b-bea0-46c3-93ef-efa4814ef664.png)
 
+- Error: Error Page
+![image](https://user-images.githubusercontent.com/91370679/230759972-9df8b7bc-5b76-48d2-8c1c-7013382b9e3e.png)
+
 ## Postman snapshots
 - Setup JSESSIONID in Postman
 ![image](https://user-images.githubusercontent.com/91370679/230707709-9d992cef-9812-40d8-80b1-c82e71e5b70f.png)
