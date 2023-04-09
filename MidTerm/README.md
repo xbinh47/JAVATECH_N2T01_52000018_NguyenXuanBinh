@@ -235,3 +235,7 @@ TechStore is a very simple website was built to sell products.
 
 - Get Order Detail: get all the details product by order id relate to order history
 ![image](https://user-images.githubusercontent.com/91370679/230708149-67d22545-af8d-4594-8809-3a1ea098aa91.png)
+
+- Confirm Order 
+![image](https://user-images.githubusercontent.com/91370679/230757928-b9c93345-f508-4009-9777-3e741d7aba0d.png)
+
